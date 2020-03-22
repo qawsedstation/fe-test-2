@@ -88,7 +88,9 @@ numberItem = [{
   - [NumberItemView JSDOC Documenation](./src/number-item-view/documentation.md)
 
 - The code in each module is less than 100 lines
-- I used sonarqube to show me potential code smells and eslint to be inline with the Airbnb style guide
+- I used SonarCube to show me potential code smells, Bugs, Duplications, Tech Debt, Vulnerabilities (zero issues found) and eslint to be inline with the Airbnb style guide
+
+<img src="./img/sonar.png" width="60%">.
 
 
 # Coding style
