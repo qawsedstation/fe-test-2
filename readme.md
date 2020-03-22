@@ -2,7 +2,7 @@
 
 ##  Please do read this ReadMe before the evaluation as I explain the reasons why I did what I did 😇
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=qawsedstation_fe-test-2&metric=alert_status)](https://sonarcloud.io/dashboard?id=qawsedstation_fe-test-2)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=qawsedstation_fe-test-2&metric=alert_status)](https://sonarcloud.io/dashboard?id=qawsedstation_fe-test-2) [![Codeship Status for qawsedstation/fe-test-2](https://app.codeship.com/projects/5fea60d0-4e7f-0138-9220-126df6fb4427/status?branch=master)](https://app.codeship.com/projects/389751)
 
 ### Dependencies
 
