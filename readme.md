@@ -72,7 +72,22 @@ numberItem = [{
 - I used **KISS principle** and keep it simple as possible 
 - I used the **DRY principle** by reusing code to avoid duplications (0% Duplications currently)
 - I **used Constants** so I do not use **magic strings** and also If I do a change in my selectors, for example, those would change automatically everywhere even on my tests (Tests should be treated like code)
-- **Separation of concerns**: I moved all the code that deals with the VIEW into another file that deals with rendering in the page and I keep all my business logic inside the App class
+- **Separation of concerns**: I moved all the code that deals with the VIEW into another file that deals with rendering in the page and I keep all my business logic inside the App class. 
+
+So instend of using: 
+ ```javascript
+document.getElementById("numbers__item").addEventListener('click', () => { 
+   //Here goes the code
+}));
+ ```
+
+I use it like that
+ ```javascript
+NumberItemView.onClickAtNumberItem((clickedNumber, isHighlighted) => {  
+   //Here goes the code 
+})
+ ```
+
 - I used **Airbnb Styleguide** and eslint to prevent inconsistencies and prettier especially if I had to work within a team 
 - I used **variables on the CSS** for my (AAA Accessible) colour palette, so I do not repeat the colours everywhere. 
 - I used the **YAGNI** principle, so I implement only the things we need for this exercise and nothing extra.
