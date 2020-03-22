@@ -119,7 +119,7 @@ The App module is covered by Integration Tests as we combine two parts together,
 - I did not implement E2E testing because we did not integrate with other pages or systems like http requests e.t.c was not huge need to apply to this exercise as the integration tests covered all the scenarios and the E2E test, in this case, would do just a duplication. 
 - Also, I'm conscious about the pros and cons of each part of the Testing Pyramid (see below image) Value vs Speed. The E2E tests give us more value but are more "expensive", and we cannot cover all the scenarios with those.  Then unit tests are quicker to write and run but give us less confident about the application as a whole. An Ideal project should have all of them in the correct balance.  
 
-<img src="./img/test.png" width="30%">.
+<img src="./img/test.png" width="40%">.
 
 
 # Use of responsive design
