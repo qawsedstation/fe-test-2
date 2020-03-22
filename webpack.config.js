@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    app: ['./src/index.js']
+    app: ['./src/index.js'],
   },
   module: {
     rules: [{
@@ -11,11 +11,24 @@ module.exports = {
         'style-loader',
         'css-loader',
       ],
+    },
+    {
+      test: /\.js$/,
+      exclude: /(node_modules)/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env'],
+          plugins: [
+            '@babel/plugin-proposal-class-properties',
+          ],
+        },
+      },
     }],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     publicPath: '/assets/',
-    filename: 'bundle.js'
-  }
+    filename: 'bundle.js',
+  },
 };
