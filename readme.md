@@ -2,6 +2,8 @@
 
 ##  Please do read this ReadMe before the evaluation as I explain the reasons why I did what I did 😇
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=qawsedstation_fe-test-2&metric=alert_status)](https://sonarcloud.io/dashboard?id=qawsedstation_fe-test-2)
+
 ### Dependencies
 
 `$ npm install`
@@ -36,10 +38,10 @@ I choose not to download any react.js, vue.js, angular.js or Angular 2+ framewor
 Although If I were up to develop into a production environment, I would consider using one of those because of the flexibility you can get like RAPID Development, Community support, Component-Based Architecture e.t.c
 
 
-# Why there is no "state managment" to the project 
+# Why there is no "state management" to the project 
 
 
-It might look a little odd initially as people will expect to see an internal state inside the App module. 
+It might look a little odd initially as someone will expect to see an internal state inside the App module. 
 
 Something like that(And this would reflect on the view immediately):
  ```javascript
@@ -57,24 +59,24 @@ numberItem = [{
 
 - That would be a perfect case if we were speaking about an Angular app: Every change at the variable would trigger a one or two-way binding, and the Dom will be changed automatically.
 
-- But there is not the case here. If we want to keep in sync between an internal state and the Dom, we should then build our VIEW library that stays in sync the Model/State and the VIEW. 
+- But there is not the case here. If we want to keep in sync between an internal state and the Dom, we should then build our VIEW library that keeps in sync the Model/State and the VIEW. 
 
 -  As was out of the scope to create our library, the only thing we could do would be to keep two sources of truth and just manually sync them. And here is the big problem. Is 100% better to use as **single source of truth** the real DOM instead of creating an additional source of truth that could potentially lead to BUGS and inconsistencies to our software
 
-> So to summarise: Keep a state internally as the Model in an MVC or MVVM world is good but if there is no framework to keep a single source of truth is better and safer. 
+> So to summarise: Keep a state internally as the Model in an MVC or MVVM world is good, but if there is no library to keep a single source of truth is better and safer to use the Real Dom as the only single source of truth. 
 
 # Maintainability and extensibility
 
 # Maintainability and extensibility
 
-- I tried to use **KISS principle** and keep it simple as possible 
-- I tried to use the **DRY principle** by reusing code to avoid duplications 
+- I used **KISS principle** and keep it simple as possible 
+- I used the **DRY principle** by reusing code to avoid duplications (0% Duplications currently)
 - I **used Constants** so I do not use **magic strings** and also If I do a change in my selectors, for example, those would change automatically everywhere even on my tests (Tests should be treated like code)
 - **Separation of concerns**: I moved all the code that deals with the VIEW into another file that deals with rendering in the page and I keep all my business logic inside the App class
 - I used **Airbnb Styleguide** and eslint to prevent inconsistencies and prettier especially if I had to work within a team 
 - I used **variables on the CSS** for my (AAA Accessible) colour palette, so I do not repeat the colours everywhere. 
-- I used the **YAGNI** principle, so I implement only the things we need for this requirement and nothing extra.
-- I used the **Constructor Design Pattern** 
+- I used the **YAGNI** principle, so I implement only the things we need for this exercise and nothing extra.
+- I used the **Constructor Design Pattern** ,so the range is configurable from outside
 - I used the **BEM** for my CSS as the naming convention in order if my app grows and becomes bigger to be able to maintain it without braking CSS of another module.
 - I used the **LIFT** Guidelines: 
   - Locating our code is easy
@@ -90,20 +92,20 @@ numberItem = [{
 - The code in each module is less than 100 lines
 - I used SonarCube to show me potential code smells, Bugs, Duplications, Tech Debt, Vulnerabilities (zero issues found) and eslint to be inline with the Airbnb style guide
 
-<img src="./img/sonar.png" width="60%">.
+<img src="./img/sonar.png" width="70%">.
 
 
 # Coding style
 
-<img src="./img/airbnb.jpg" width="20%">.
+<img src="./img/airbnb.jpg" width="30%">.
 
-> I worked with a couple in the past, but now I use Airbnb style guide. I believe there is nothing to do with, which is the best one out there is more about what the team feels more comfortable to work with, and the consistent results that using one of them will bring.  I used elsint to enforce the usage of it, and I'm also using prettier to format my code automatically.
+> I worked with a couple in the past, but now I use Airbnb style guide. I believe there is nothing to do with, which is the best one out there. Is more about what the team feels more comfortable to work with. I used elsint to enforce the usage of the style guide, and I'm also using prettier to format my code automatically.
 
 
 
 About the semicolons comment: 
-We have done numerous debates in the past about this issue, and we have been in meetings for more time that does not pay-off in the end. 
-Some people are very opinionated on semicolons. So we can avoid semicolons this is fine. There is no big deal with it.  By the end, the webpack will minify and uglify and remove all semicolons so that everything will become again the same. I'm not suggesting anything, other than picking a style guide that is already out there like AirBnB, Google e.t.c use it as a team in a mature way and enforce consistency and code quality. Only change rules when it is necessary the community updates the style guide continiusly. 
+We have done numerous debates in the past about this issue, and the time spend on it does not pay-off. 
+Some people are very opinionated on semicolons. So yeah we can avoid semicolons this is fine. There is no big deal with it.  By the end, the webpack will minify and uglify and remove all semicolons so that everything will become again the same. I'm not suggesting anything, other than picking a style guide that is already out there like AirBnB, Google e.t.c use it as a team in a mature way and enforce consistency and code quality. Only change rules when it is necessary the community updates the style guide continuously. 
 
 But if we decide to go without semicolons, we should be careful with return statements. If you return something, add it on the same line as the return (same for the break, throw, continue). Never start a line with parentheses, those might be concatenated with the previous line and create different results.
 
@@ -114,8 +116,8 @@ But if we decide to go without semicolons, we should be careful with return stat
 The App module is covered by Integration Tests as we combine two parts together, the "View" and the "controller."
 
 - There is a way to use BDD as well with a plugin called jest-cucumber, but I did not have the time to configure it at this point.
-- I did not implement E2E testing or Functional Test but because we did not integrate with other systems and pages like http requests e.t.c was not huge need to apply to this exercise as the integration test covered all the scenarios and the E2E test, in this case, would do just a duplication. 
-- Also, I'm conscious about the pros and cons of each part of the Testing Pyramid Value vs Speed. The E2E tests give us more value but are more "expensive", and we cannot cover all the scenarios with those.  Then unit tests are quicker to write and run but give us less confident about the application as a whole. An Ideal project should have all of them in a balance.  
+- I did not implement E2E testing because we did not integrate with other pages or systems like http requests e.t.c was not huge need to apply to this exercise as the integration tests covered all the scenarios and the E2E test, in this case, would do just a duplication. 
+- Also, I'm conscious about the pros and cons of each part of the Testing Pyramid (see below image) Value vs Speed. The E2E tests give us more value but are more "expensive", and we cannot cover all the scenarios with those.  Then unit tests are quicker to write and run but give us less confident about the application as a whole. An Ideal project should have all of them in the correct balance.  
 
 <img src="./img/test.png" width="30%">.
 
@@ -132,11 +134,11 @@ Before we decide what to use in a production environment though we must look on 
 
 # Performance & Accessibility
 
-I got Accessibility 100% score by running Lighthouse Audit, and I found the most available colours.
+I got Accessibility 100% score by running Lighthouse Audit.
 
 <img src="./img/lighthouse.png" width="70%">.
 
-I got AAA score on my colour pallet after I run my accessibility tests. 
+I got AAA accessibility score on my colour pallet after I run my accessibility tests. 
 
 <img src="./img/accesibility.png" width="70%">.
 
@@ -148,16 +150,16 @@ I got AAA score on my colour pallet after I run my accessibility tests.
 
 > For CSS I used the BEM naming convention.
 
-In summary: I used BEM to namespace my Block Elements and create group into smaller CSS classes depending on the attributes for example 
-I use another small Class for --highlighted and another --primary and this way I can keep the base block class numbers and change specific options. 
+In summary: I used BEM to namespace my Block Elements and create group of smaller CSS classes depending on the attributes for example 
+- I use another small Class for --highlighted and another --primary and this way I can keep my modifiers separate from my block elements.
 
 That follows the SOLID principle taken from the programming into the design here and more specific the I — Interface segregation principle.
 
-The interface segregation principle states that no client should be forced to depend on classes it does not use.
-Put more simply: Do not add additional styles to an existing class.
-Instead, create a new class and let your user use multiple Classes if needed. For example, I could have --small --big and I could mix and match my Classes in a better way.
+The interface segregation principle states that the web app should not be forced to depend on classes it does not use.
+Put more simply: Do not add additional styles to an existing Class.
+Instead, create a new Class and let developers use multiple Classes if needed. For example, I could have --small --big and I could mix and match my Classes in a better way.
 
-- There are cases where BEM is not needed. For example, Shadow DOM can encapsulate the CSS of one component and therefore is not necessary to use a namespace
+- There are cases where BEM is not needed. For example, Shadow DOM can encapsulate the CSS of one component and therefore is not necessary to use a namespace.
 
 More details about BEM: https://levelup.gitconnected.com/css-naming-convention-bem-block-element-modifier-2ada852a14d3
 
@@ -165,9 +167,6 @@ More details about BEM: https://levelup.gitconnected.com/css-naming-convention-b
 
 All the requirements were covered. 
 
-* I hope I understand them right. Here are the unit tests that work as a documentation of what I covered. 
+* I hope I understood them right. Here are the unit tests that work as a documentation of what cases I covered. 
 
 <img src="./img/requirments.png" width="70%">.
-
-
-Link to [the exercise](#the-exercise).
